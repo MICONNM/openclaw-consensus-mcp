@@ -4,7 +4,7 @@
 
 Built by **yanmiayn** — 16yo solo dev from Korea, building 9-LLM consensus to fight hallucinations.
 
-<!-- mcp-name: io.github.yanmiayn/openclaw-consensus -->
+<!-- mcp-name: io.github.MICONNM/openclaw-consensus-mcp -->
 
 ## What it does
 
