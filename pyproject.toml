@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "openclaw-consensus-mcp"
+version = "0.1.0"
+description = "MCP server for OpenClaw Consensus — 9-LLM consensus to fight hallucinations. Built by yanmiayn, 16yo Korean solo dev."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "yanmiayn", email = "yanmiayne@gmail.com" }
+]
+keywords = ["mcp", "model-context-protocol", "llm", "consensus", "anthropic", "claude", "openclaw"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "mcp[cli]>=1.2.0",
+    "httpx>=0.27.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[project.scripts]
+openclaw-consensus = "openclaw_consensus.server:main"
+
+[project.urls]
+Homepage = "https://github.com/yanmiayn/openclaw-consensus-mcp"
+Repository = "https://github.com/yanmiayn/openclaw-consensus-mcp"
+Issues = "https://github.com/yanmiayn/openclaw-consensus-mcp/issues"
+RapidAPI = "https://rapidapi.com/yanmiayn/api/openclaw-consensus"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/openclaw_consensus"]
