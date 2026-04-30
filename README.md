@@ -2,7 +2,7 @@
 
 > 9-LLM consensus inside Claude — a hallucination guardrail you can call as a tool.
 
-Built by **yanmiayn** — 16yo solo dev from Korea, building 9-LLM consensus to fight hallucinations.
+Production-grade 9-LLM consensus with disagreement scoring and cheapest-route picks to fight hallucinations.
 
 <!-- mcp-name: io.github.MICONNM/openclaw-consensus-mcp -->
 

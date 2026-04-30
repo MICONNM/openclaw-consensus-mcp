@@ -102,7 +102,7 @@ Insert the line in **alphabetical order** within the section.
 ### Exact line to add
 
 ```markdown
-- [yanmiayn/openclaw-consensus-mcp](https://github.com/yanmiayn/openclaw-consensus-mcp) 🐍 ☁️ - 9-LLM consensus answers, disagreement scoring, and cheapest-route recommendations to fight hallucinations. Built by a 16yo Korean solo dev.
+- [yanmiayn/openclaw-consensus-mcp](https://github.com/yanmiayn/openclaw-consensus-mcp) 🐍 ☁️ - 9-LLM consensus answers, disagreement scoring, and cheapest-route recommendations to fight hallucinations.
 ```
 
 (emoji legend per the repo: 🐍 = Python, ☁️ = cloud service)
@@ -139,7 +139,7 @@ Single LLMs hallucinate confidently. Nine models rarely hallucinate the same thi
 - MCP Registry: `io.github.yanmiayn/openclaw-consensus`
 - RapidAPI: https://rapidapi.com/yanmiayn/api/openclaw-consensus
 
-Built solo by a 16-year-old Korean indie dev.
+Built with OpenClaw Consensus.
 ```
 
 ### How to actually file it (UI, ~2 min)

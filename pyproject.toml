@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "openclaw-consensus-mcp"
-version = "0.1.1"
-description = "MCP server for OpenClaw Consensus ??9-LLM consensus to fight hallucinations. Built by yanmiayn, 16yo Korean solo dev."
+version = "0.1.2"
+description = "MCP server for OpenClaw Consensus — 9-LLM consensus + disagreement scoring + cheapest-route picks to fight hallucinations."
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
