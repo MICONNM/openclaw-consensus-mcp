@@ -1,0 +1,26 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+# OpenClaw Consensus MCP — 9-LLM consensus to fight hallucinations.
+
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - rapidApiKey
+    properties:
+      rapidApiKey:
+        type: string
+        title: RapidAPI Key
+        description: Your RapidAPI key from https://rapidapi.com/yanmiayn/api/openclaw-consensus
+  commandFunction: |-
+    config => ({
+      command: 'python',
+      args: ['-m', 'openclaw_consensus_mcp'],
+      env: { RAPIDAPI_KEY: config.rapidApiKey }
+    })
+  exampleConfig:
+    rapidApiKey: "YOUR_RAPIDAPI_KEY_HERE"
+
+build:
+  dockerfilePath: Dockerfile
+  dockerBuildPath: .
