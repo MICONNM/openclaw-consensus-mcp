@@ -8,6 +8,7 @@ All notable changes to this project are documented in this file.
 - Fix repository URLs and align README response examples with the implemented client.
 - Fix Smithery startup command and add the missing Dockerfile.
 - Harden the Docker image by copying only runtime files and running as a non-root user.
+- Align MCP Registry metadata with the currently published PyPI version.
 
 ## 0.1.1 - 2026-04-30
 
