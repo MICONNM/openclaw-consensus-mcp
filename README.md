@@ -1,24 +1,28 @@
 # OpenClaw Consensus MCP
 
-> 9-LLM consensus inside Claude — a hallucination guardrail you can call as a tool.
+[![CI](https://github.com/MICONNM/openclaw-consensus-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/MICONNM/openclaw-consensus-mcp/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/openclaw-consensus-mcp.svg)](https://pypi.org/project/openclaw-consensus-mcp/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Production-grade 9-LLM consensus with disagreement scoring and cheapest-route picks to fight hallucinations.
+> Multi-model consensus inside MCP clients: compare answers, surface disagreement, and escalate only when needed.
+
+OpenClaw Consensus MCP wraps the OpenClaw Consensus API as three Model Context Protocol tools. It is designed for workflows where a maintainer wants a second opinion before accepting a risky answer, review summary, or routing decision.
 
 <!-- mcp-name: io.github.MICONNM/openclaw-consensus-mcp -->
 
 ## What it does
 
-OpenClaw runs the same prompt across 9 frontier LLMs (Claude, GPT, Gemini, Llama, Mistral, etc.), then returns:
+OpenClaw runs the same prompt across multiple models, then returns:
 
-- a **consensus answer** (with confidence + which models contributed),
-- a **disagreement score** (high = your single LLM is probably about to hallucinate), and
-- a **cheapest route** (pick the smallest model combo that still hits your quality bar).
+- a **consensus answer** with confidence and model response metadata,
+- a **disagreement heuristic** derived from the deep consensus response, and
+- a **cheapest route** recommendation that tries smaller model sets before escalating.
 
 This MCP server exposes those three capabilities as tools so Claude Desktop / Claude Code can call them mid-conversation.
 
 ## Why consensus?
 
-A single LLM can confidently make things up. Nine models rarely make up the *same* thing. When 9 models agree, you can trust the answer; when they fan out, you have a cheap, calibrated hallucination signal — before the user sees the wrong answer.
+A single model can produce a confident but incorrect answer. Comparing multiple responses does not prove correctness, but disagreement is a useful signal that a maintainer should review the output more carefully.
 
 ## Install
 
@@ -74,44 +78,49 @@ Get a 9-LLM consensus answer.
 
 ```json
 {
-  "answer": "string",
+  "consensus": "string",
   "confidence": 0.0,
-  "models_used": ["claude-opus-4.7", "gpt-5.1", "..."],
-  "disagreement": 0.0
+  "models_responded": 5,
+  "votes": []
 }
 ```
 
+The `consensus` tool returns the upstream API response as-is. Fields may expand as the endpoint evolves.
+
 ### `disagreement_score(prompt)`
 
-How much the 9 models disagree on a prompt — a hallucination warning signal.
+How much the deep consensus response disagrees on a prompt.
 
 **Returns**
 
 ```json
 {
-  "score": 0.0,
-  "per_model": { "model-id": "answer summary" }
+  "disagreement": 0.0,
+  "confidence": 1.0,
+  "models_responded": 9,
+  "votes": []
 }
 ```
 
 ### `cheapest_route(prompt, target_quality=0.85)`
 
-Cheapest model combo that meets a quality threshold (0..1).
+Try `fast`, `balanced`, and `deep` modes in order until the confidence threshold is met.
 
 **Returns**
 
 ```json
 {
-  "models": ["..."],
-  "estimated_cost_usd": 0.0,
-  "estimated_quality": 0.0
+  "selected_mode": "balanced",
+  "models_used": 5,
+  "confidence": 0.9,
+  "answer": "string"
 }
 ```
 
 ## Local development
 
 ```bash
-git clone https://github.com/yanmiayn/openclaw-consensus-mcp
+git clone https://github.com/MICONNM/openclaw-consensus-mcp
 cd openclaw-consensus-mcp
 uv venv && source .venv/bin/activate
 uv pip install -e ".[dev]"
@@ -131,6 +140,18 @@ uv build
 uv publish      # to PyPI
 mcp-publisher publish   # to the official MCP Registry
 ```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the development workflow and [docs/maintainer-workflow.md](docs/maintainer-workflow.md) for triage, review, security, and release responsibilities.
+
+## Limitations
+
+- Consensus is a review aid, not a correctness guarantee.
+- Network-backed tools require a configured OpenClaw endpoint and may incur provider charges.
+- Do not send secrets, private source code, or personal data unless your endpoint policy explicitly allows it.
+
+## Security
+
+Please report vulnerabilities privately using the process in [SECURITY.md](SECURITY.md).
 
 ## License
 

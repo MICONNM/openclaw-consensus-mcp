@@ -38,9 +38,9 @@ dev = [
 openclaw-consensus = "openclaw_consensus.server:main"
 
 [project.urls]
-Homepage = "https://github.com/yanmiayn/openclaw-consensus-mcp"
-Repository = "https://github.com/yanmiayn/openclaw-consensus-mcp"
-Issues = "https://github.com/yanmiayn/openclaw-consensus-mcp/issues"
+Homepage = "https://github.com/MICONNM/openclaw-consensus-mcp"
+Repository = "https://github.com/MICONNM/openclaw-consensus-mcp"
+Issues = "https://github.com/MICONNM/openclaw-consensus-mcp/issues"
 RapidAPI = "https://rapidapi.com/yanmiayn/api/openclaw-consensus"
 
 [tool.hatch.build.targets.wheel]
