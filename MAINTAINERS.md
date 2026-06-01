@@ -3,6 +3,7 @@
 ## Primary Maintainer
 
 - [MICONNM](https://github.com/MICONNM)
+- Security reports: `yanmiayne@gmail.com`
 
 ## Responsibilities
 

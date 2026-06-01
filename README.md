@@ -78,12 +78,14 @@ Get a 9-LLM consensus answer.
 
 ```json
 {
-  "answer": "string",
+  "consensus": "string",
   "confidence": 0.0,
   "models_responded": 5,
   "votes": []
 }
 ```
+
+The `consensus` tool returns the upstream API response as-is. Fields may expand as the endpoint evolves.
 
 ### `disagreement_score(prompt)`
 
